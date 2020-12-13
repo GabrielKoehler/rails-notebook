@@ -31,3 +31,5 @@
 <br>
 
 <%= link_to 'New Contact', new_contact_path %>
+<% index_var = "comming from index view to partial, with locals, don't forget render partial:" %>
+<%= render partial: "/contacts/shared/teste", locals: { teste_var: index_var } %>
