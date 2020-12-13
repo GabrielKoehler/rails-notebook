@@ -1,28 +1,21 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: %i[show edit update destroy]
 
-  # GET /contacts
-  # GET /contacts.json
   def index
     @contacts = Contact.all
   end
 
-  # GET /contacts/1
-  # GET /contacts/1.json
-  def show
-  end
+  def show; end
 
-  # GET /contacts/new
   def new
     @contact = Contact.new
+    kinds_options_for_select
   end
 
-  # GET /contacts/1/edit
   def edit
+    kinds_options_for_select
   end
 
-  # POST /contacts
-  # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
 
@@ -37,8 +30,6 @@ class ContactsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /contacts/1
-  # PATCH/PUT /contacts/1.json
   def update
     respond_to do |format|
       if @contact.update(contact_params)
@@ -51,8 +42,6 @@ class ContactsController < ApplicationController
     end
   end
 
-  # DELETE /contacts/1
-  # DELETE /contacts/1.json
   def destroy
     @contact.destroy
     respond_to do |format|
@@ -61,14 +50,17 @@ class ContactsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contact
-      @contact = Contact.find(params[:id])
-    end
+  def kinds_options_for_select
+    @kinds_options_for_select = Kind.all
+  end
 
-    # Only allow a list of trusted parameters through.
-    def contact_params
-      params.require(:contact).permit(:name, :email, :kind_id, :rmk)
-    end
+  private
+
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
+
+  def contact_params
+    params.require(:contact).permit(:name, :email, :kind_id, :rmk)
+  end
 end
