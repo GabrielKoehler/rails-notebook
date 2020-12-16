@@ -9,6 +9,7 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    @contact.build_address
     kinds_options_for_select
   end
 
@@ -61,6 +62,6 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:contact).permit(:name, :email, :kind_id, :rmk)
+    params.require(:contact).permit(:name, :email, :kind_id, :rmk, address_attributes: %i[street city state])
   end
 end
