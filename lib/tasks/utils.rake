@@ -7,7 +7,7 @@ namespace :utils do
         name: Faker::Name.name,
         email: Faker::Internet.safe_email,
         kind: Kind.all.sample,
-        rmk: Faker::Lorem.sentence(word_count: 10)
+        rmk: LeroleroGenerator.sentence([1, 2].sample)
       )
     end
     puts 'Contacts generated!'

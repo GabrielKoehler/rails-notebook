@@ -1,6 +1,7 @@
-<h1>Editing Contact</h1>
+<h1><%= "#{t('messages.editing')} #{@contact.class.model_name.human(count: 1 )}" %></h1>
+
 
 <%= render 'form', contact: @contact %>
 
-<%= link_to 'Show', @contact %> |
-<%= link_to 'Back', contacts_path %>
+<%= link_to t('buttons.show'), @contact %> |
+<%= link_to t('buttons.back'), contacts_path %>

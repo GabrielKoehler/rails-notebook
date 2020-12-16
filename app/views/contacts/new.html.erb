@@ -1,5 +1,6 @@
-<h1>New Contact</h1>
+<h1><%= "#{t('messages.new')} #{@contact.class.model_name.human(count: 1 )}" %></h1>
+
 
 <%= render 'form', contact: @contact %>
 
-<%= link_to 'Back', contacts_path %>
+<%= link_to t('buttons.back'), contacts_path %>
