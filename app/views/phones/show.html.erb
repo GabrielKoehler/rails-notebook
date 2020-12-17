@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong><%= @phone.class.human_attribute_name("phone") %>:</strong>
   <%= @phone.phone %>
 </p>
 
 <p>
-  <strong>Contact:</strong>
+  <strong><%= @phone.class.human_attribute_name("contact")  %>:</strong>
   <%= @phone.contact %>
 </p>
 
-<%= link_to 'Edit', edit_phone_path(@phone) %> |
-<%= link_to 'Back', phones_path %>
+<%= link_to t('buttons.edit'), edit_phone_path(@phone) %> |
+<%= link_to t('buttons.back'), phones_path %>
